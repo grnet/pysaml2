@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'hello22..'
+                echo 'hello23..'
             }
         }
     }
