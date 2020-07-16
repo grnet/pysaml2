@@ -299,6 +299,8 @@ class Config(object):
                 raise ConfigurationError(
                     "No attribute converters, something is wrong!!")
 
+            print("cnf= {}".format(cnf.get("attribute_map_dir")))
+            print("acs= {}".format(acs))
             _acs = self.getattr("attribute_converters", typ)
             if _acs:
                 _acs.extend(acs)

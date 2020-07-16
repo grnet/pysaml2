@@ -62,6 +62,7 @@ def ac_factory(path=""):
         if path not in sys.path:
             sys.path.insert(0, path)
 
+        print("attrimaps dir: {}".format(os.listdir(path)))
         for fil in os.listdir(path):
             if fil.endswith(".py"):
                 mod = import_module(fil[:-3])
@@ -76,7 +77,7 @@ def ac_factory(path=""):
     else:
         from saml2 import attributemaps
 
-        print(attributemaps.__all__)
+        print("attributemaps: {}".format(attributemaps.__all__))
         for typ in attributemaps.__all__:
             mod = import_module(".%s" % typ, "saml2.attributemaps")
             for key, item in mod.__dict__.items():
@@ -86,6 +87,7 @@ def ac_factory(path=""):
                     atco = AttributeConverter(item["identifier"])
                     atco.from_dict(item)
                     acs.append(atco)
+        print(acs)
 
     return acs
 
