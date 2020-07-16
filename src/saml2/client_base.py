@@ -403,6 +403,7 @@ class Base(Entity):
                         'name', 'friendly_name'))
 
             if not name:
+                print([c._to.get(friendly_name.lower()) for c in self.config.attribute_converters])
                 for converter in self.config.attribute_converters:
                     try:
                         name = converter._to[friendly_name.lower()]
@@ -433,7 +434,7 @@ class Base(Entity):
         item = RequestedAttributes(
             extension_elements=items)
         extensions.add_extension_element(item)
-
+        raise Exception()
         force_authn = str(
             kwargs.pop("force_authn", None)
             or self.config.getattr("force_authn", "sp")
