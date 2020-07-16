@@ -76,6 +76,7 @@ def ac_factory(path=""):
     else:
         from saml2 import attributemaps
 
+        print(attributemaps.__all__)
         for typ in attributemaps.__all__:
             mod = import_module(".%s" % typ, "saml2.attributemaps")
             for key, item in mod.__dict__.items():
