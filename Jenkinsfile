@@ -11,4 +11,16 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            script{
+                if ( env.BRANCH_NAME == 'eIDAS' ) {
+                    build job: '/IDENTITY/devs%2Fidentity%2Fsatosa/eIDAS', propagate: false
+                }
+            }
+        }
+    }
 }
